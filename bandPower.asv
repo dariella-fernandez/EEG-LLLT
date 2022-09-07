@@ -1,0 +1,350 @@
+%% Calculate average band power for each channel for each subject
+% the average power contained in the frequency interval
+% averaging of PSD within each of the 5 frequency bands
+
+for sub = 1:numSubjects_tls
+    for chan = 1:numChannels
+        alphaPow_tls_base(chan,sub) = bandpower(pxx_tls_base(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_tls_first(chan,sub) = bandpower(pxx_tls_first(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_tls_second(chan,sub) = bandpower(pxx_tls_second(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_tls_rec(chan,sub) = bandpower(pxx_tls_rec(chan,:,sub),f1,[8,13],'psd');
+
+        betaPow_tls_base(chan,sub) = bandpower(pxx_tls_base(chan,:,sub),f1,[13,30],'psd');
+        betaPow_tls_first(chan,sub) = bandpower(pxx_tls_first(chan,:,sub),f1,[13,30],'psd');
+        betaPow_tls_second(chan,sub) = bandpower(pxx_tls_second(chan,:,sub),f1,[13,30],'psd');
+        betaPow_tls_rec(chan,sub) = bandpower(pxx_tls_rec(chan,:,sub),f1,[13,30],'psd');
+
+        deltaPow_tls_base(chan,sub) = bandpower(pxx_tls_base(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_tls_first(chan,sub) = bandpower(pxx_tls_first(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_tls_second(chan,sub) = bandpower(pxx_tls_second(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_tls_rec(chan,sub) = bandpower(pxx_tls_rec(chan,:,sub),f1,[0.5,4],'psd');
+        
+        thetaPow_tls_base(chan,sub) = bandpower(pxx_tls_base(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_tls_first(chan,sub) = bandpower(pxx_tls_first(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_tls_second(chan,sub) = bandpower(pxx_tls_second(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_tls_rec(chan,sub) = bandpower(pxx_tls_rec(chan,:,sub),f1,[4,8],'psd');
+
+        gammaPow_tls_base(chan,sub) = bandpower(pxx_tls_base(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_tls_first(chan,sub) = bandpower(pxx_tls_first(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_tls_second(chan,sub) = bandpower(pxx_tls_second(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_tls_rec(chan,sub) = bandpower(pxx_tls_rec(chan,:,sub),f1,[30,75],'psd');
+    end 
+end
+
+for sub = 1:numSubjects_pbo
+    for chan = 1:numChannels
+        alphaPow_pbo_base(chan,sub) = bandpower(pxx_pbo_base(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_pbo_first(chan,sub) = bandpower(pxx_pbo_first(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_pbo_second(chan,sub) = bandpower(pxx_pbo_second(chan,:,sub),f1,[8,13],'psd');
+        alphaPow_pbo_rec(chan,sub) = bandpower(pxx_pbo_rec(chan,:,sub),f1,[8,13],'psd');
+
+        betaPow_pbo_base(chan,sub) = bandpower(pxx_pbo_base(chan,:,sub),f1,[13,30],'psd');
+        betaPow_pbo_first(chan,sub) = bandpower(pxx_pbo_first(chan,:,sub),f1,[13,30],'psd');
+        betaPow_pbo_second(chan,sub) = bandpower(pxx_pbo_second(chan,:,sub),f1,[13,30],'psd');
+        betaPow_pbo_rec(chan,sub) = bandpower(pxx_pbo_rec(chan,:,sub),f1,[13,30],'psd');
+
+        deltaPow_pbo_base(chan,sub) = bandpower(pxx_pbo_base(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_pbo_first(chan,sub) = bandpower(pxx_pbo_first(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_pbo_second(chan,sub) = bandpower(pxx_pbo_second(chan,:,sub),f1,[0.5,4],'psd');
+        deltaPow_pbo_rec(chan,sub) = bandpower(pxx_pbo_rec(chan,:,sub),f1,[0.5,4],'psd');
+        
+        thetaPow_pbo_base(chan,sub) = bandpower(pxx_pbo_base(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_pbo_first(chan,sub) = bandpower(pxx_pbo_first(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_pbo_second(chan,sub) = bandpower(pxx_pbo_second(chan,:,sub),f1,[4,8],'psd');
+        thetaPow_pbo_rec(chan,sub) = bandpower(pxx_pbo_rec(chan,:,sub),f1,[4,8],'psd');
+
+        gammaPow_pbo_base(chan,sub) = bandpower(pxx_pbo_base(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_pbo_first(chan,sub) = bandpower(pxx_pbo_first(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_pbo_second(chan,sub) = bandpower(pxx_pbo_second(chan,:,sub),f1,[30,75],'psd');
+        gammaPow_pbo_rec(chan,sub) = bandpower(pxx_pbo_rec(chan,:,sub),f1,[30,75],'psd');
+    end 
+end
+%% Filter subjects 
+% 
+% alphaPow_tls_base = alphaPow_tls_base(:,numSubjects_tls);
+% alphaPow_tls_second = alphaPow_tls_second(:,numSubjects_tls);
+% alphaPow_tls_rec = alphaPow_tls_rec(:,numSubjects_tls);
+% alphaPow_pbo_base = alphaPow_pbo_base(:,numSubjects_pbo);
+% alphaPow_pbo_second = alphaPow_pbo_second(:,numSubjects_pbo);
+% alphaPow_pbo_rec = alphaPow_pbo_rec(:,numSubjects_pbo);
+% 
+% betaPow_tls_base = betaPow_tls_base(:,numSubjects_tls);
+% betaPow_tls_second = betaPow_tls_second(:,numSubjects_tls);
+% betaPow_tls_rec = betaPow_tls_rec(:,numSubjects_tls);
+% betaPow_pbo_base = betaPow_pbo_base(:,numSubjects_pbo);
+% betaPow_pbo_second = betaPow_pbo_second(:,numSubjects_pbo);
+% betaPow_pbo_rec = betaPow_pbo_rec(:,numSubjects_pbo);
+% 
+% deltaPow_tls_base = deltaPow_tls_base(:,numSubjects_tls);
+% deltaPow_tls_second = deltaPow_tls_second(:,numSubjects_tls);
+% deltaPow_tls_rec = deltaPow_tls_rec(:,numSubjects_tls);
+% deltaPow_pbo_base = deltaPow_pbo_base(:,numSubjects_pbo);
+% deltaPow_pbo_second = deltaPow_pbo_second(:,numSubjects_pbo);
+% deltaPow_pbo_rec = deltaPow_pbo_rec(:,numSubjects_pbo);
+% 
+% 
+% gammaPow_tls_base = gammaPow_tls_base(:,numSubjects_tls);
+% gammaPow_tls_second = gammaPow_tls_second(:,numSubjects_tls);
+% gammaPow_tls_rec = gammaPow_tls_rec(:,numSubjects_tls);
+% gammaPow_pbo_base = gammaPow_pbo_base(:,numSubjects_pbo);
+% gammaPow_pbo_second = gammaPow_pbo_second(:,numSubjects_pbo);
+% gammaPow_pbo_rec = gammaPow_pbo_rec(:,numSubjects_pbo);
+
+%% Ratio of average band power between stimulation/recovery and baseline
+% Xinlong recommends to use this normalization for further statistical
+% analysis
+% Dividing by the magnitude of baseline for normalization, not unitleess
+
+r_alpha_tls_first = alphaPow_tls_first./alphaPow_tls_base;
+r_alpha_tls_second = alphaPow_tls_second./alphaPow_tls_base;
+r_alpha_tls_rec = alphaPow_tls_rec./alphaPow_tls_base;
+r_beta_tls_first = betaPow_tls_first./betaPow_tls_base;
+r_beta_tls_second = betaPow_tls_second./betaPow_tls_base;
+r_beta_tls_rec = betaPow_tls_rec./betaPow_tls_base;
+r_delta_tls_first = deltaPow_tls_first./deltaPow_tls_base;
+r_delta_tls_second = deltaPow_tls_second./deltaPow_tls_base;
+r_delta_tls_rec = deltaPow_tls_rec./deltaPow_tls_base;
+r_theta_tls_first = thetaPow_tls_first./thetaPow_tls_base;
+r_theta_tls_second = thetaPow_tls_second./thetaPow_tls_base;
+r_theta_tls_rec = thetaPow_tls_rec./thetaPow_tls_base;
+r_gamma_tls_first = gammaPow_tls_first./gammaPow_tls_base;
+r_gamma_tls_second = gammaPow_tls_second./gammaPow_tls_base;
+r_gamma_tls_rec = gammaPow_tls_rec./gammaPow_tls_base;
+
+r_alpha_pbo_first = alphaPow_pbo_first./alphaPow_pbo_base;
+r_alpha_pbo_second = alphaPow_pbo_second./alphaPow_pbo_base;
+r_alpha_pbo_rec = alphaPow_pbo_rec./alphaPow_pbo_base;
+r_beta_pbo_first = betaPow_pbo_first./betaPow_pbo_base;
+r_beta_pbo_second = betaPow_pbo_second./betaPow_pbo_base;
+r_beta_pbo_rec = betaPow_pbo_rec./betaPow_pbo_base;
+r_delta_pbo_first = deltaPow_pbo_first./deltaPow_pbo_base;
+r_delta_pbo_second = deltaPow_pbo_second./deltaPow_pbo_base;
+r_delta_pbo_rec = deltaPow_pbo_rec./deltaPow_pbo_base;
+r_theta_pbo_first = thetaPow_pbo_first./thetaPow_pbo_base;
+r_theta_pbo_second = thetaPow_pbo_second./thetaPow_pbo_base;
+r_theta_pbo_rec = thetaPow_pbo_rec./thetaPow_pbo_base;
+r_gamma_pbo_first = gammaPow_pbo_first./gammaPow_pbo_base;
+r_gamma_pbo_second = gammaPow_pbo_second./gammaPow_pbo_base;
+r_gamma_pbo_rec = gammaPow_pbo_rec./gammaPow_pbo_base;
+
+% Mean difference between TLS and PBO
+% For topoplots
+meanDiff_alpha_first = mean(r_alpha_tls_first,2)-mean(r_alpha_pbo_first,2);
+meanDiff_alpha_second = mean(r_alpha_tls_second,2)-mean(r_alpha_pbo_second,2);
+meanDiff_alpha_rec = mean(r_alpha_tls_rec,2)-mean(r_alpha_pbo_rec,2);
+
+meanDiff_beta_first = mean(r_beta_tls_first,2)-mean(r_beta_pbo_first,2);
+meanDiff_beta_second = mean(r_beta_tls_second,2)-mean(r_beta_pbo_second,2);
+meanDiff_beta_rec = mean(r_beta_tls_rec,2)-mean(r_beta_pbo_rec,2);
+
+meanDiff_delta_first = mean(r_delta_tls_first,2)-mean(r_delta_pbo_first,2);
+meanDiff_delta_second = mean(r_delta_tls_second,2)-mean(r_delta_pbo_second,2);
+meanDiff_delta_rec = mean(r_delta_tls_rec,2)-mean(r_delta_pbo_rec,2);
+
+meanDiff_theta_first = mean(r_theta_tls_first,2)-mean(r_theta_pbo_first,2);
+meanDiff_theta_second = mean(r_theta_tls_second,2)-mean(r_theta_pbo_second,2);
+meanDiff_theta_rec = mean(r_theta_tls_rec,2)-mean(r_theta_pbo_rec,2);
+
+meanDiff_gamma_first = mean(r_gamma_tls_first,2)-mean(r_gamma_pbo_first,2);
+meanDiff_gamma_second = mean(r_gamma_tls_second,2)-mean(r_gamma_pbo_second,2);
+meanDiff_gamma_rec = mean(r_gamma_tls_rec,2)-mean(r_gamma_pbo_rec,2);
+%% Plot the bandpower ratio to baseline
+%% TLS 4-8
+% 
+% chan = 34;
+% 
+% figure;
+% sgtitle("Normalized band power TLS 4-8 min vs Sham, chan: " + labels(chan) );
+% subplot(1,3,1)
+% stem(1:length(numSubjects_tls),r_delta_tls_second(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_delta_pbo_second(chan,:),'color','b');
+% title("delta band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to baseline")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,2)
+% stem(1:length(numSubjects_tls),r_theta_tls_second(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_theta_pbo_second(chan,:),'color','b');
+% title("theta band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to baseline")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,3)
+% stem(1:length(numSubjects_tls),r_alpha_tls_second(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_alpha_pbo_second(chan,:),'color','b');
+% title("alpha band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to baseline ")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,4)
+% stem(1:length(numSubjects_tls),r_beta_tls_second(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_beta_pbo_second(chan,:),'color','b');
+% title("beta band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to basline")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,5)
+% stem(1:length(numSubjects_tls),r_gamma_tls_second(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_gamma_pbo_second(chan,:),'color','b');
+% title("gamma band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to basline")
+% legend('TLS','PBO')
+% 
+% %% Recovery
+% 
+% chan = 34;
+% 
+% figure;
+% sgtitle("Normalized band power TLS Recovery vs Sham, chan: " + labels(chan) );
+% subplot(1,3,1)
+% stem(1:length(numSubjects_tls),r_alpha_tls_rec(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_alpha_pbo_rec(chan,:),'color','b');
+% title("alpha band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to baseline ")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,2)
+% stem(1:length(numSubjects_tls),r_beta_tls_rec(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_beta_pbo_rec(chan,:),'color','b');
+% title("beta band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to basline")
+% legend('TLS','PBO')
+% 
+% subplot(1,3,3)
+% stem(1:length(numSubjects_tls),r_delta_tls_rec(chan,:),'color','r');
+% hold on;
+% stem(1:length(numSubjects_pbo),r_delta_pbo_rec(chan,:),'color','b');
+% title("delta band")
+% curtick = get(gca, 'XTick');
+% set(gca, 'XTick', unique(round(curtick)))
+% xlabel("subject")
+% ylabel("ratio to baseline")
+% legend('TLS','PBO')
+
+%% TOPOPLOTS
+
+% Mean difference in band power
+% scaled by 100
+
+% delta
+figure; 
+sgtitle("delta ∆mpower between TLS and PBO")
+subplot(1,2,1)
+topoplot(100*meanDiff_delta_first,chanlocs(1:64));
+title("Treatment min 1-4");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,2)
+topoplot(100*meanDiff_delta_second,chanlocs(1:64));
+title("Treatment min 4-8");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,3)
+topoplot(100*meanDiff_delta_rec,chanlocs(1:64));
+title("Recovery");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+
+% theta
+figure; 
+sgtitle("theta ∆mpower between TLS and PBO")
+subplot(1,2,1)
+topoplot(100*meanDiff_theta_first,chanlocs(1:64));
+title("Treatment min 1-4");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,2)
+topoplot(100*meanDiff_theta_second,chanlocs(1:64));
+title("Treatment min 4-8");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,3)
+topoplot(100*meanDiff_theta_rec,chanlocs(1:64));
+title("Recovery");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+
+% alpha
+figure; 
+sgtitle("alpha ∆mpower between TLS and PBO")
+subplot(1,2,1)
+topoplot(100*meanDiff_alpha_first,chanlocs(1:64));
+title("Treatment min 1-4");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,2)
+topoplot(100*meanDiff_alpha_second,chanlocs(1:64));
+title("Treatment min 4-8");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,3)
+topoplot(100*meanDiff_alpha_rec,chanlocs(1:64));
+title("Recovery");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+
+% beta
+figure; 
+sgtitle("beta ∆mpower between TLS and PBO")
+subplot(1,2,1)
+topoplot(100*meanDiff_beta_first,chanlocs(1:64));
+title("Treatement min 1-4");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,2)
+topoplot(100*meanDiff_beta_second,chanlocs(1:64));
+title("Treatement min 4-8");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,3)
+topoplot(100*meanDiff_beta_rec,chanlocs(1:64));
+title("Recovery");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+
+% gamma
+figure; 
+sgtitle("gamma ∆mpower between TLS and PBO")
+subplot(1,2,1)
+topoplot(100*meanDiff_gamma_first,chanlocs(1:64));
+title("Treatment min 1-4");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,2)
+topoplot(100*meanDiff_gamma_second,chanlocs(1:64));
+title("Treatment min 4-8");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
+subplot(1,2,3)
+topoplot(100*meanDiff_gamma_rec,chanlocs(1:64));
+title("Recovery");
+hcb=colorbar;
+hcb.Title.String = "∆mpower";
