@@ -60,35 +60,51 @@ for sub = 1:numSubjects_pbo
     end 
 end
 %% Filter subjects 
-% 
-% alphaPow_tls_base = alphaPow_tls_base(:,numSubjects_tls);
-% alphaPow_tls_second = alphaPow_tls_second(:,numSubjects_tls);
-% alphaPow_tls_rec = alphaPow_tls_rec(:,numSubjects_tls);
-% alphaPow_pbo_base = alphaPow_pbo_base(:,numSubjects_pbo);
-% alphaPow_pbo_second = alphaPow_pbo_second(:,numSubjects_pbo);
-% alphaPow_pbo_rec = alphaPow_pbo_rec(:,numSubjects_pbo);
-% 
-% betaPow_tls_base = betaPow_tls_base(:,numSubjects_tls);
-% betaPow_tls_second = betaPow_tls_second(:,numSubjects_tls);
-% betaPow_tls_rec = betaPow_tls_rec(:,numSubjects_tls);
-% betaPow_pbo_base = betaPow_pbo_base(:,numSubjects_pbo);
-% betaPow_pbo_second = betaPow_pbo_second(:,numSubjects_pbo);
-% betaPow_pbo_rec = betaPow_pbo_rec(:,numSubjects_pbo);
-% 
-% deltaPow_tls_base = deltaPow_tls_base(:,numSubjects_tls);
-% deltaPow_tls_second = deltaPow_tls_second(:,numSubjects_tls);
-% deltaPow_tls_rec = deltaPow_tls_rec(:,numSubjects_tls);
-% deltaPow_pbo_base = deltaPow_pbo_base(:,numSubjects_pbo);
-% deltaPow_pbo_second = deltaPow_pbo_second(:,numSubjects_pbo);
-% deltaPow_pbo_rec = deltaPow_pbo_rec(:,numSubjects_pbo);
-% 
-% 
-% gammaPow_tls_base = gammaPow_tls_base(:,numSubjects_tls);
-% gammaPow_tls_second = gammaPow_tls_second(:,numSubjects_tls);
-% gammaPow_tls_rec = gammaPow_tls_rec(:,numSubjects_tls);
-% gammaPow_pbo_base = gammaPow_pbo_base(:,numSubjects_pbo);
-% gammaPow_pbo_second = gammaPow_pbo_second(:,numSubjects_pbo);
-% gammaPow_pbo_rec = gammaPow_pbo_rec(:,numSubjects_pbo);
+
+alphaPow_tls_base = alphaPow_tls_base(:,numSubjects_tls);
+alphaPow_tls_first = alphaPow_tls_first(:,numSubjects_tls);
+alphaPow_tls_second = alphaPow_tls_second(:,numSubjects_tls);
+alphaPow_tls_rec = alphaPow_tls_rec(:,numSubjects_tls);
+alphaPow_pbo_base = alphaPow_pbo_base(:,numSubjects_pbo);
+alphaPow_pbo_first = alphaPow_pbo_first(:,numSubjects_pbo);
+alphaPow_pbo_second = alphaPow_pbo_second(:,numSubjects_pbo);
+alphaPow_pbo_rec = alphaPow_pbo_rec(:,numSubjects_pbo);
+
+betaPow_tls_base = betaPow_tls_base(:,numSubjects_tls);
+betaPow_tls_first = betaPow_tls_first(:,numSubjects_tls);
+betaPow_tls_second = betaPow_tls_second(:,numSubjects_tls);
+betaPow_tls_rec = betaPow_tls_rec(:,numSubjects_tls);
+betaPow_pbo_base = betaPow_pbo_base(:,numSubjects_pbo);
+betaPow_pbo_first = betaPow_pbo_first(:,numSubjects_pbo);
+betaPow_pbo_second = betaPow_pbo_second(:,numSubjects_pbo);
+betaPow_pbo_rec = betaPow_pbo_rec(:,numSubjects_pbo);
+
+deltaPow_tls_base = deltaPow_tls_base(:,numSubjects_tls);
+deltaPow_tls_first = deltaPow_tls_first(:,numSubjects_tls);
+deltaPow_tls_second = deltaPow_tls_second(:,numSubjects_tls);
+deltaPow_tls_rec = deltaPow_tls_rec(:,numSubjects_tls);
+deltaPow_pbo_base = deltaPow_pbo_base(:,numSubjects_pbo);
+deltaPow_pbo_first = deltaPow_pbo_first(:,numSubjects_pbo);
+deltaPow_pbo_second = deltaPow_pbo_second(:,numSubjects_pbo);
+deltaPow_pbo_rec = deltaPow_pbo_rec(:,numSubjects_pbo);
+
+gammaPow_tls_base = gammaPow_tls_base(:,numSubjects_tls);
+gammaPow_tls_first = gammaPow_tls_first(:,numSubjects_tls);
+gammaPow_tls_second = gammaPow_tls_second(:,numSubjects_tls);
+gammaPow_tls_rec = gammaPow_tls_rec(:,numSubjects_tls);
+gammaPow_pbo_base = gammaPow_pbo_base(:,numSubjects_pbo);
+gammaPow_pbo_first = gammaPow_pbo_first(:,numSubjects_pbo);
+gammaPow_pbo_second = gammaPow_pbo_second(:,numSubjects_pbo);
+gammaPow_pbo_rec = gammaPow_pbo_rec(:,numSubjects_pbo);
+
+thetaPow_tls_base = thetaPow_tls_base(:,numSubjects_tls);
+thetaPow_tls_first = thetaPow_tls_first(:,numSubjects_tls);
+thetaPow_tls_second = thetaPow_tls_second(:,numSubjects_tls);
+thetaPow_tls_rec = thetaPow_tls_rec(:,numSubjects_tls);
+thetaPow_pbo_base = thetaPow_pbo_base(:,numSubjects_pbo);
+thetaPow_pbo_first = thetaPow_pbo_first(:,numSubjects_pbo);
+thetaPow_pbo_second = thetaPow_pbo_second(:,numSubjects_pbo);
+thetaPow_pbo_rec = thetaPow_pbo_rec(:,numSubjects_pbo);
 
 %% Ratio of average band power between stimulation/recovery and baseline
 % Xinlong recommends to use this normalization for further statistical
