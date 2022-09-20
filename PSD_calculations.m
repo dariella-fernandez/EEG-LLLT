@@ -30,31 +30,31 @@ end
 %% Average of subjects across a given channel 
 channel = 34;
 figure; 
-plot(f1,10*log10(mean(pxx_tls_first(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,10*log10(mean(pxx_tls_first(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,10*log10(mean(pxx_tls_base(channel,:,numSubjects_tls),3)), 'color','b')
+plot(f1,10*log10(mean(pxx_tls_base(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('PSD (dB/Hz)')
 xlim([1 70])
 title("TILS Avg. PSD: Baseline and First Half Treatment", labels{channel})
-legend('rec','baseline')
+legend('min 1-4','baseline')
 
 channel = 34;
 figure; 
-plot(f1,10*log10(mean(pxx_tls_second(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,10*log10(mean(pxx_tls_second(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,10*log10(mean(pxx_tls_base(channel,:,numSubjects_tls),3)), 'color','b')
+plot(f1,10*log10(mean(pxx_tls_base(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('PSD (dB/Hz)')
 xlim([1 70])
 title("TILS Avg. PSD: Baseline and Second Half Treatment", labels{channel})
-legend('rec','baseline')
+legend('min 4-8','baseline')
 
 channel = 34;
 figure; 
-plot(f1,10*log10(mean(pxx_tls_rec(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,10*log10(mean(pxx_tls_rec(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,10*log10(mean(pxx_tls_base(channel,:,numSubjects_tls),3)), 'color','b')
+plot(f1,10*log10(mean(pxx_tls_base(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('PSD (dB/Hz)')
 xlim([1 70])
@@ -63,9 +63,31 @@ legend('rec','baseline')
 
 channel = 34;
 figure; 
-plot(f1,10*log10(mean(pxx_pbo_rec(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,10*log10(mean(pxx_pbo_second(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,10*log10(mean(pxx_pbo_base(channel,:,numSubjects_tls),3)), 'color','b')
+plot(f1,10*log10(mean(pxx_pbo_base(channel,:,:),3)), 'color','b')
+xlabel('Frequency (Hz)')
+ylabel('PSD (dB/Hz)')
+xlim([1 70])
+title("PBO Avg. PSD: Baseline and Second Half", labels{channel})
+legend('min 4-8','baseline')
+
+channel = 34;
+figure; 
+plot(f1,10*log10(mean(pxx_pbo_first(channel,:,:),3)), 'color','r')
+hold on;
+plot(f1,10*log10(mean(pxx_pbo_base(channel,:,:),3)), 'color','b')
+xlabel('Frequency (Hz)')
+ylabel('PSD (dB/Hz)')
+xlim([1 70])
+title("PBO Avg. PSD: Baseline and First Half", labels{channel})
+legend('min 1-4','baseline')
+
+channel = 34;
+figure; 
+plot(f1,10*log10(mean(pxx_pbo_rec(channel,:,:),3)), 'color','r')
+hold on;
+plot(f1,10*log10(mean(pxx_pbo_base(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('PSD (dB/Hz)')
 xlim([1 70])
@@ -98,24 +120,35 @@ nodB_nor_pxx_pbo_rec = 100*((pxx_pbo_rec./pxx_pbo_base)-1);
 %% Average of subjects across a given channel 
 channel = 34;
 figure;
-plot(f1,(mean(nodB_nor_pxx_tls_second(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,(mean(nodB_nor_pxx_tls_first(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,(mean(nodB_nor_pxx_pbo_second(channel,:,numSubjects_pbo),3)), 'color','b')
+plot(f1,(mean(nodB_nor_pxx_pbo_first(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('% change of PSD')
 xlim([1 40])
-title("% Change in PSD at FP2", labels(channel))
+title("% Change in PSD at FP2 during min 1-4", labels(channel))
+legend('TLS min 1-4','PBO min 1-4')
+
+channel = 34;
+figure;
+plot(f1,(mean(nodB_nor_pxx_tls_second(channel,:,:),3)), 'color','r')
+hold on;
+plot(f1,(mean(nodB_nor_pxx_pbo_second(channel,:,:),3)), 'color','b')
+xlabel('Frequency (Hz)')
+ylabel('% change of PSD')
+xlim([1 40])
+title("% Change in PSD at FP2 during min 4-8", labels(channel))
 legend('TLS min 4-8','PBO min 4-8')
 
 channel = 34;
 figure;
-plot(f1,(mean(nodB_nor_pxx_tls_rec(channel,:,numSubjects_tls),3)), 'color','r')
+plot(f1,(mean(nodB_nor_pxx_tls_rec(channel,:,:),3)), 'color','r')
 hold on;
-plot(f1,(mean(nodB_nor_pxx_pbo_rec(channel,:,numSubjects_pbo),3)), 'color','b')
+plot(f1,(mean(nodB_nor_pxx_pbo_rec(channel,:,:),3)), 'color','b')
 xlabel('Frequency (Hz)')
 ylabel('% change of PSD')
 xlim([1 40])
-title("% Change in PSD at FP2", labels(channel))
+title("% Change in PSD at FP2 during recovery", labels(channel))
 legend('TLS Rec','PBO Rec')
 
 % %% For each subject for each channel - TLS
